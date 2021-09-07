@@ -22,7 +22,7 @@ public class StudentController {
         return studentService.studentList();
     }
 
-    @GetMapping("/student")
+    @GetMapping("/student/{school}")
     public List<StudentDto> studentListBySchool(@ModelAttribute("school") String school) {
         return studentService.studentListBySchool(school);
     }
