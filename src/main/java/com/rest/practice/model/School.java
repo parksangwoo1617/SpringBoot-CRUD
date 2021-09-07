@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class School {
