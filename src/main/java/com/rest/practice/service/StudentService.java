@@ -10,25 +10,36 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class StudentService {
 
     private final StudentRepository studentRepository;
     private final SchoolService schoolService;
 
+    @Transactional
     public void enrollmentStudent(StudentDto student) {
         School school = schoolService.findSchool(student.getSchool());
         Student students = new Student(student.getName(), school);
         studentRepository.save(students);
     }
 
-    public List<Student> studentList() {
-        return studentRepository.findAll();
+    @Transactional
+    public List<StudentDto> studentList() {
+        return studentRepository.findAll()
+                .stream().map(student -> StudentDto.builder()
+                    .name(student.getName())
+                    .createdDate(student.getCreatedDate())
+                    .school(student.getSchool().getSchoolName())
+                    .build())
+                .collect(Collectors.toList());
     }
 
-    public List<Student> studentListBySchool(String school) {
+    @Transactional
+    public List<StudentDto> studentListBySchool(String school) {
         return studentRepository.findAllBySchoolName(school);
     }
 }
