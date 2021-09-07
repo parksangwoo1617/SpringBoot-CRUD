@@ -1,5 +1,6 @@
 package com.rest.practice.controller;
 
+import com.rest.practice.dto.SchoolResponse;
 import com.rest.practice.model.School;
 import com.rest.practice.model.Student;
 import com.rest.practice.service.SchoolService;
@@ -17,8 +18,8 @@ public class SchoolController {
     private final SchoolService schoolService;
 
     @GetMapping("/school")
-    public List<School> schoolList(@RequestParam Long id) {
-        List<School> schools = schoolService.schoolList();
+    public List<SchoolResponse> schoolList() {
+        List<SchoolResponse> schools = schoolService.schoolList();
         return schools;
     }
 
