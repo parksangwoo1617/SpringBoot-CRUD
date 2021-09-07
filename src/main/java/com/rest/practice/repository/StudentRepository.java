@@ -12,6 +12,6 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Transactional(readOnly = true)
-    @Query("select s from Student s where s.school = (select o from School o where o.schoolName = :school)")
+    @Query("select s from Student s where s.school.schoolName = :school")
     List<StudentDto> findAllBySchoolName(@Param("school") String school);
 }
