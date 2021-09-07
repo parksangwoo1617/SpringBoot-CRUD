@@ -9,9 +9,9 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Student {
