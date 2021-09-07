@@ -2,8 +2,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/restAPI?serverTimeZone=UTC&CharacterEncoding=UTF-8
-    username: root
-    password: nsgg9577;;
+    username: ${root}
+    password: ${DB_PASS}
   jpa:
       open-in-view: false
       hibernate:
